@@ -1,0 +1,66 @@
+@import "custom_variables";
+@import "bootstrap/scss/bootstrap";
+
+@font-face {
+  font-family: "EnchantedLand";
+  src: url("/assets/EnchantedLand-jnX9.ttf") format("truetype");
+}
+
+body {
+  background-image: url("/assets/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+h1 {
+  font-family: "EnchantedLand";
+  font-size: 5em;
+  padding-top: 2rem;
+}
+
+.dimmer {
+  background-color: black;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  opacity: .5
+}
+
+.row {
+  padding: 1em;
+}
+
+.card {
+  cursor: pointer;
+  color: $body-color;
+  opacity: .75;
+}
+
+.turn-status {
+  border: 1px solid;
+  padding: 1em;
+  text-align: center;
+}
+
+.player {
+  transform: rotate(270deg);
+  position: absolute;
+  top: 10em;
+  left: 9em;
+}
+
+.warrior-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.selected {
+  border: 3px solid red;
+}
+
+#confirmFightModal {
+  color: $body-color;
+}

@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-5 offset-6">
+    <%= form_with model: @game do |f| %>
+      <div class="form-group">
+        <%= label_tag(:game_id, "Game Identifier:") %>
+        <%= f.text_field :game_id, class: "form-control", "aria-describedby" => "gameIdHelp", placeholder: "my-nifty-game" %>
+        <small id="gameIdHelp" class="form-text text-muted">
+          This will be used as the website url for your game. Please only use lower <br/>
+          case letters and numbers, and no special characters other than "-" or "_".
+        </small>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:player_one, "Name of Player One:") %>
+        <%= f.text_field :player_one, class: "form-control", placeholder: "Jane Smith" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:player_two, "Name of Player Two:") %>
+        <%= f.text_field :player_two, class: "form-control", placeholder: "John Carpenter" %>
+      </div>
+      <%= f.submit "Let's Battle!", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>

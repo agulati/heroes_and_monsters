@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col">
+    <div class="player">
+      <h4><%= @game.player_one %></h4>
+    </div>
+  </div>
+  <% @game.player_one_hand.each_with_index do |card, i| %>
+    <%= render partial: "card", locals: { card: card, i: i, offset: 0, player: @game.game_state[:current_player] == "player_one" ? "attacker-card" : "defender-card" } %>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-2">
+    <div class="player">
+      <h4><%= @game.player_two %></h4>
+    </div>
+  </div>
+  <% @game.player_two_hand.each_with_index do |card, i| %>
+    <%= render partial: "card", locals: { card: card, i: i, offset: 5, player: @game.game_state[:current_player] == "player_two" ? "attacker-card" : "defender-card" } %>
+  <% end %>
+</div>
+
+<% content_for :turn_status do %>
+<div class="row">
+  <div class="turn-status col-8 offset-4">
+    <% if @game.turn_result %>
+      <p>
+        <%= @game.turn_result.html_safe %>
+      </p>
+    <% end %>
+    <h4>
+      <%= @game.current_player %>, it's your turn.
+    </h4>
+    <p>
+      Select your warriors and...
+    </p>
+
+    <%= form_with(url: "/games/#{@game.game_id}/attack", method: "post", id: "attackForm") do %>
+      <%= hidden_field :attack, :attacker, id: "attackerField" %>
+      <%= hidden_field :attack, :defender, id: "defenderField" %>
+      <%= button_tag "Fight!", type: "button", class: "btn btn-success", data: { toggle: "modal", target: "#confirmFightModal" } %>
+    <% end %>
+  </div>
+</div>
+<% end %>
+
+<div class="modal fade" id="confirmFightModal" tabindex="-1" role="dialog" aria-labelledby="confirmFightModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmFightModalLabel">Shall we proceed?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body confirmation-message">
+        You must select an attacker and defender to continue.
+      </div>
+      <div class="modal-footer">
+        <%= audio_tag("swordraw.mp3") %>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button id="confirmAttack" type="button" class="btn btn-success" data-dismiss="modal">Attack!</button>
+      </div>
+    </div>
+  </div>
+</div>

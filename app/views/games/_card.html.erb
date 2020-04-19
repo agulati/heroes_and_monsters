@@ -1,0 +1,18 @@
+<div class="col-2">
+  <div class="card <%= player %>">
+    <%= image_tag "greek-warrior-#{((i % 5)+1+offset)}.jpg", alt: card.warrior_name, class: "card-img-top" %>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div title="<%= card.warrior_name %>" class="warrior-name">
+          <%= card.warrior_name %>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <%= "Attack: #{card.attack} / #{Warrior::FULL_ATTACK}" %>
+      </li>
+      <li class="list-group-item">
+        <%= "Defense: #{card.defense} / #{Warrior::FULL_DEFENSE}" %>
+      </li>
+    </ul>
+  </div>
+</div>

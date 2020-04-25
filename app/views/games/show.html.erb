@@ -38,6 +38,8 @@
       <%= hidden_field :attack, :attacker, id: "attackerField" %>
       <%= hidden_field :attack, :defender, id: "defenderField" %>
       <%= button_tag "Fight!", type: "button", class: "btn btn-success", data: { toggle: "modal", target: "#confirmFightModal" } %>
+      or
+      <%= link_to "Quest!", new_game_quest_path(@game), class: "btn btn-info" %>
     <% end %>
   </div>
 </div>

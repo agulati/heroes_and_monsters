@@ -31,6 +31,14 @@ class GameService
       },
       current_player:   "player_one",
       opposing_player:  "player_two",
+      available_quests: [
+        "Hercules",
+        "Achilles",
+        "Perseus",
+        "Minotaur",
+        "Medusa",
+        "Kraken"
+      ]
     }
   end
 end

@@ -17,7 +17,8 @@ class Game < ApplicationRecord
   #   },
   #   current_player: <string>,
   #   opposing_player: <string>,
-  #   turn_result: <string>
+  #   turn_result: <string>,
+  #   quests: [<string>]
   # }
 
   def to_param

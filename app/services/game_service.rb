@@ -32,13 +32,13 @@ class GameService
       current_player:   "player_one",
       opposing_player:  "player_two",
       available_quests: [
-        "Hercules",
-        "Achilles",
-        "Perseus",
-        "Minotaur",
-        "Medusa",
-        "Kraken"
-      ]
+        { name: "Hercules", labor: "Kill the Nemean Lion" },
+        { name: "Achilles", labor: "Kill the Stymphalian Birds" },
+        { name: "Perseus",  labor: "Capture the Cretan Bull" },
+        { name: "Minotaur", labor: "Capture the Erymanthian Boar" },
+        { name: "Medusa",   labor: "Kill the Lernean Hydra" },
+        { name: "Kraken",   labor: "Capture the Cattle of Geryon" },
+      ],
     }
   end
 end

@@ -1,5 +1,4 @@
 require("@rails/ujs").start()
-require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
@@ -40,5 +39,23 @@ $(function () {
     $("#defenderField").val(window.defenderFighter)
     $("audio")[0].play()
     setTimeout(function () { $("#attackForm").submit() }, 2000)
+  })
+
+  $(".quest-card").on("click", function () {
+    var unSelecting = $(this).hasClass("selected")
+    $(".quest-card").removeClass("selected")
+
+    if( unSelecting ) {
+      window.labor = null
+    } else {
+      $(this).addClass("selected")
+      window.labor = $(".quest-card.selected .labor").text().trim()
+    }
+  })
+
+  $("#confirmQuest").on("click", function () {
+    $("#questField").val(window.labor)
+    $("audio")[0].play()
+    setTimeout(function () { $("#questForm").submit() }, 2000)
   })
 })

@@ -52,4 +52,8 @@ class Game < ApplicationRecord
   def turn_result
     game_state&.dig(:turn_result)
   end
+
+  def available_quests
+    game_state&.dig(:available_quests)
+  end
 end

@@ -1,0 +1,18 @@
+<div class="col-4">
+  <div class="card quest-card">
+    <%= image_tag "#{quest[:name]}.jpg", alt: "#{quest[:name]}: #{quest[:labor]}", class: "card-img-top" %>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div title="<%= quest %>" class="labor">
+          <%= quest[:name] %>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <%= quest[:labor] %>
+      </li>
+      <li class="list-group-item">
+        <%= "Defense: " %>
+      </li>
+    </ul>
+  </div>
+</div>

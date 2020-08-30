@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-5 offset-6">
-    <%= form_with model: @game do |f| %>
+    <%= form_with model: @game, remote: false do |f| %>
       <div class="form-group">
         <%= label_tag(:game_id, "Game Identifier:") %>
         <%= f.text_field :game_id, class: "form-control", "aria-describedby" => "gameIdHelp", placeholder: "sea-of-monsters" %>

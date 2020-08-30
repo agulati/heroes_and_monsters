@@ -1,11 +1,12 @@
 require("@rails/ujs").start()
+require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
 
 require("../stylesheets/main.scss")
 
-$(function () {
+document.addEventListener("turbolinks:load", function() {
   $(".attacker-card").on("click", function () {
     var unSelecting = $(this).hasClass("selected")
     $(".attacker-card").removeClass("selected")
@@ -46,15 +47,21 @@ $(function () {
     $(".quest-card").removeClass("selected")
 
     if( unSelecting ) {
-      window.labor = null
+      window.labor    = null
+      window.name     = null
+      window.questId  = null
+      $(".confirmation-message").html("You must select a quest to continue.")
     } else {
       $(this).addClass("selected")
+      window.name = $(".quest-card.selected .name").text().trim()
       window.labor = $(".quest-card.selected .labor").text().trim()
+      window.questId = $(".selected").data("questId")
+      $(".confirmation-message").html("Get ready to " + window.labor + "!")
     }
   })
 
   $("#confirmQuest").on("click", function () {
-    $("#questField").val(window.labor)
+    $("#questField").val(window.questId)
     $("audio")[0].play()
     setTimeout(function () { $("#questForm").submit() }, 2000)
   })

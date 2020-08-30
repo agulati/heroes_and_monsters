@@ -1,22 +1,25 @@
 <div>
-  <% @game.available_quests.each_with_index do |quest, i| %>
-    <% if i % 3 == 0 %>
-      <div class="row">
-    <% end %>
-    <%= render partial: "card", locals: { quest: quest, i: i, offset: 0, player: "" } %>
-    <% if i % 3 == 2 %>
+  <div class="row">
+    <div class="col-4 offset-4">
+      <div class="card quest-card" data-quest-id="<%= @quest[:quest] %>">
+        <%= image_tag "#{@quest[:name]}.jpg", alt: "#{@quest[:name]}: #{@quest[:labor]}", class: "card-img-top" %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+          </li>
+          <li class="list-group-item">
+          </li>
+        </ul>
       </div>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
 </div>
 
 <% content_for :turn_status do %>
 <div class="row">
   <div class="turn-status col-8 offset-4">
-    <h4>Please select your quest.</h4>
-    <%= form_with(url: "/games/#{@game.game_id}/quests", method: "post", id: "questForm") do %>
-      <%= hidden_field :quest, :quest_id, id: "questField" %>
-      <%= button_tag "Begin Quest", type: "button", class: "btn btn-success", data: { toggle: "modal", target: "#startQuestModal" } %>
+    <h4><%= @quest[:labor] %></h4>
+    <%= form_with(url: "/games/#{@game.game_id}/quest", method: "post", id: "questForm") do %>
+      <%= button_tag "Do Quest Stuff", type: "button", class: "btn btn-success", data: { toggle: "modal", target: "#startQuestModal" } %>
     <% end %>
   </div>
 </div>

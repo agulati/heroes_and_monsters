@@ -18,7 +18,8 @@ class Game < ApplicationRecord
   #   current_player: <string>,
   #   opposing_player: <string>,
   #   turn_result: <string>,
-  #   quests: [<string>]
+  #   available_quests: [<string>],
+  #   current_quest: <string>
   # }
 
   def to_param
@@ -55,5 +56,14 @@ class Game < ApplicationRecord
 
   def available_quests
     game_state&.dig(:available_quests)
+  end
+
+  def set_current_quest(quest_id:)
+    game_state[:current_quest] = quest_id
+    save!
+  end
+
+  def current_quest
+    game_state&.dig(:current_quest)
   end
 end

@@ -5,7 +5,7 @@
     </div>
   </div>
   <% @game.player_one_hand.each_with_index do |card, i| %>
-    <%= render partial: "card", locals: { card: card, i: i, offset: 0, player: @game.game_state[:current_player] == "player_one" ? "attacker-card" : "defender-card" } %>
+    <%= render partial: "card", locals: { card: card, i: i, image_index: "1", player: @game.game_state[:current_player] == "player_one" ? "attacker-card" : "defender-card" } %>
   <% end %>
 </div>
 <div class="row">
@@ -15,7 +15,7 @@
     </div>
   </div>
   <% @game.player_two_hand.each_with_index do |card, i| %>
-    <%= render partial: "card", locals: { card: card, i: i, offset: 5, player: @game.game_state[:current_player] == "player_two" ? "attacker-card" : "defender-card" } %>
+    <%= render partial: "card", locals: { card: card, i: i, image_index: "4", player: @game.game_state[:current_player] == "player_two" ? "attacker-card" : "defender-card" } %>
   <% end %>
 </div>
 
